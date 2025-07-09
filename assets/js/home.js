@@ -165,5 +165,26 @@ const handleFvOverlay = () => {
   window.addEventListener(evt, handleFvOverlay);
 });
 
+// ===== about =====
+const aboutSwiper = new Swiper("[data-about-swiper]", {
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  speed: 600,
+  breakpoints: {
+    0: {
+      slidesPerView: 1.5,
+      spaceBetween: 20,
+      draggable: true,
+    },
+    1024: {
+      slidesPerView: 2.5,
+      spaceBetween: 30,
+      draggable: false,
+    },
+  },
+});
+
 // ### ===== DOMCONTENTLOADED ===== ###
 window.addEventListener("DOMContentLoaded", homepage);
