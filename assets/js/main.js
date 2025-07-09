@@ -22,15 +22,16 @@ const init = () => {
 // ===== lenis =====
 if (!window.lenis) {
   window.lenis = new Lenis({
-    duration: 1.0,
-    easing: t => t * (2 - t),
-    smooth: true,
-    mouseMultiplier: 1.0,
-    smoothTouch: true,
-    touchMultiplier: 1.5,
-    infinite: false,
+    duration: 1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(1 - t, 2.5)),
     direction: "vertical",
     gestureDirection: "vertical",
+    smooth: true,
+    smoothTouch: false,
+    mouseMultiplier: 1,
+    touchMultiplier: 1.5,
+    autoRaf: true,
+    infinite: false,
   });
   function raf(t) {
     window.lenis.raf(t);

@@ -1,6 +1,37 @@
 /* Components
 ------------------------------------------------------------*/
 
+// ===== padding =====
+.u-padd {
+  padding: 0 var(--padd);
+
+  @include maxW(1023px) {
+    padding: 0 var(--paddsp);
+  }
+}
+
+// ===== heading =====
+.c-heading {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  @include maxW(1023px) {
+    gap: 10px;
+
+    h2 {
+      font-size: 1.9rem;
+    }
+  }
+}
+
 // ===== loading =====
 .c-loading {
   position: fixed;
@@ -124,6 +155,100 @@
         width: 25px;
         height: 25px;
       }
+    }
+  }
+}
+
+// ===== news =====
+.c-news {
+  &_list {
+    margin-top: 100px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  &_title,
+  &_items {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+  }
+
+  &_items {
+    p.date {
+      font-size: 1.7rem;
+    }
+    p.category {
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      width: 120px;
+      height: 30px;
+      background-color: #f5f4ec;
+      border-radius: 60px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    p.title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+      display: inline-block;
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+
+    div.arrow {
+      margin-left: auto;
+    }
+  }
+
+  &_title {
+    flex: 1;
+    min-width: 0;
+    justify-content: space-between;
+  }
+
+  &_group {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  @include maxW(1023px) {
+    &_list {
+      margin-top: 50px;
+      gap: 30px;
+    }
+
+    &_items {
+      display: block;
+
+      p.date,
+      p.title {
+        font-size: 1.4rem;
+      }
+
+      p.category {
+        font-size: 1.1rem;
+        width: 84px;
+        height: 25px;
+      }
+    }
+
+    &_group {
+      gap: 15px;
+    }
+
+    &_title {
+      margin-top: 15px;
+      gap: 20px;
     }
   }
 }

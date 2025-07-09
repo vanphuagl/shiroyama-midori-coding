@@ -221,4 +221,45 @@
       }
     }
   }
+
+  // ===== news =====
+  .news {
+    &_container {
+      margin-top: 300px;
+    }
+
+    &_link {
+      margin: 100px auto 0;
+      font-size: 1.8rem;
+      width: fit-content;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120%;
+        height: 2px;
+        border-radius: 10px;
+        background-color: $green-cl;
+      }
+    }
+
+    @include maxW(1023px) {
+      &_container {
+        margin-top: 120px;
+      }
+
+      &_link {
+        margin: 60px auto 0;
+        font-size: 1.4rem;
+
+        &:after {
+          bottom: -10px;
+        }
+      }
+    }
+  }
 }
