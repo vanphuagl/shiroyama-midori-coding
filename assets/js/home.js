@@ -121,6 +121,7 @@ const swiperFv = new Swiper("[data-fv-swiper]", {
 gsap.registerPlugin(ScrollTrigger);
 const handleFvContent = () => {
   const fvContent = document.querySelector("[data-fv-content]");
+  const fv = document.querySelector("[data-fv]");
   if (breakpoints.matches) return;
   gsap.to(fvContent, {
     y: "-50%",
@@ -128,7 +129,7 @@ const handleFvContent = () => {
     scrollTrigger: {
       trigger: "[data-fv]",
       start: "top top",
-      end: () => "+=" + window.innerHeight * 2,
+      end: () => "+=" + fv.offsetHeight * 2,
       pin: true,
       scrub: true,
       invalidateOnRefresh: true,
@@ -174,13 +175,16 @@ const aboutSwiper = new Swiper("[data-about-swiper]", {
   speed: 600,
   breakpoints: {
     0: {
-      slidesPerView: 1.5,
+      slidesPerView: 1.231,
       spaceBetween: 20,
+      allowTouchMove: true,
       draggable: true,
     },
     1024: {
-      slidesPerView: 2.5,
+      // slidesPerView: 2.205,
+      slidesPerView: "auto",
       spaceBetween: 30,
+      allowTouchMove: false,
       draggable: false,
     },
   },
