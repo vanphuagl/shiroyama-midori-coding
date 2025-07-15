@@ -17,11 +17,13 @@ window.lenis = new Lenis({
   direction: "vertical",
   gestureDirection: "vertical",
   smooth: true,
-  smoothTouch: false,
+  smoothTouch: true,
   mouseMultiplier: 1,
   touchMultiplier: 1.5,
   autoRaf: true,
   infinite: false,
+  direction: "vertical",
+  gestureDirection: "vertical",
 });
 window.lenis.on("scroll", ScrollTrigger.update);
 gsap.ticker.add((time) => {
@@ -75,16 +77,6 @@ const initLoading = async () => {
   }
 };
 
-// ===== scroll logo shrink =====
-const handleHeaderLogo = function () {
-  const headerLogo = document.querySelector("[data-header-logo]");
-  const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-  if (!headerLogo || breakpoints.matches) return;
-
-  headerLogo.classList.toggle("--shrink", scrollPosition > 80);
-};
-window.addEventListener("scroll", handleHeaderLogo);
-
 // ===== init header =====
 const handleHeaderNavbar = () => {
   const scrollY = window.scrollY;
@@ -120,35 +112,54 @@ const swiperFv = new Swiper("[data-fv-swiper]", {
 // # scrollTrigger fv-content
 gsap.registerPlugin(ScrollTrigger);
 const handleFvContent = () => {
-  const fvContent = document.querySelector("[data-fv-content]");
   const fv = document.querySelector("[data-fv]");
-  if (breakpoints.matches) return;
+  const fvContent = document.querySelector("[data-fv-content]");
+  ScrollTrigger.getById("fvContent")?.kill();
+  if (breakpoints.matches || !fv || !fvContent) return;
+
   gsap.to(fvContent, {
     y: "-50%",
     ease: "none",
     scrollTrigger: {
-      trigger: "[data-fv]",
+      id: "fvContent",
+      trigger: fv,
       start: "top top",
-      end: () => "+=" + fv.offsetHeight * 2,
+      end: () => `+=${fv.offsetHeight}`,
       pin: true,
-      scrub: true,
+      scrub: 0.5,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        const p = self.progress;
-        const fadeStart = 0.3;
-        if (p < fadeStart) {
-          fvContent.style.opacity = 0;
-        } else {
-          fvContent.style.opacity = 1;
-        }
+        fvContent.style.opacity = self.progress < 0.3 ? 0 : 1;
       },
+      markers: false,
     },
   });
+
+  // refactor refresh
+  requestAnimationFrame(() => {
+    ScrollTrigger.refresh();
+  });
 };
-"pageshow change".split(" ").forEach((evt) => {
+
+// resize smooth
+let resizeTimeout;
+const optimizedResize = () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    requestAnimationFrame(handleFvContent);
+  }, 200);
+};
+
+// use ResizeObserver wuth root margin
+const resizeObserver = new ResizeObserver(optimizedResize);
+resizeObserver.observe(document.documentElement, {
+  box: "content-box",
+});
+
+// init
+"load pageshow".split(" ").forEach((evt) => {
   window.addEventListener(evt, handleFvContent);
 });
-window.addEventListener("resize", () => ScrollTrigger.refresh());
 
 // # scroll overlay swiper
 const handleFvOverlay = () => {

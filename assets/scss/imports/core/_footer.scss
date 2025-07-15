@@ -2,4 +2,120 @@
 ------------------------------------------------------------*/
 
 .c-footer {
+  &_container {
+    position: relative;
+    width: 100%;
+    padding: 150px 40px 35px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  &_center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 35px;
+
+    svg {
+      margin: 0 auto;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.3;
+      text-align: center;
+    }
+  }
+
+  &_back {
+    width: fit-content;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &_contact {
+    line-height: 1.7;
+  }
+
+  &_link {
+    margin-top: 28px;
+    display: flex;
+    gap: 25px;
+
+    a {
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -7px;
+        display: block;
+        width: 100%;
+        height: 2px;
+        border-radius: 10px;
+        background-color: $green-cl;
+      }
+    }
+  }
+
+  @include maxW(1023px) {
+    &_container {
+      padding: 45px var(--paddsp) 25px;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 60px;
+      align-items: center;
+    }
+
+    &_contact {
+      margin-top: 45px;
+      text-align: center;
+      font-size: 1.3rem;
+      line-height: 1.67;
+    }
+
+    &_link {
+      margin-top: 22px;
+      justify-content: center;
+      gap: 20px;
+      font-size: 1.3rem;
+    }
+
+    &_center {
+      gap: 20px;
+
+      p {
+        font-size: 1.2rem;
+      }
+
+      svg {
+        width: 82.19px;
+        height: auto;
+      }
+    }
+
+    &_back {
+      margin: 0 auto;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #dcead2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+  }
 }

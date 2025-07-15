@@ -6,7 +6,7 @@
   display: block;
   position: relative;
   z-index: 1;
-  height: 100%;
+  height: auto;
   padding-bottom: 100%;
   overflow: hidden;
 
@@ -17,6 +17,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba($color: #000000, $alpha: 0);
+    z-index: 1;
   }
 
   img {
@@ -53,6 +54,11 @@
 
   @include maxW(1023px) {
     gap: 10px;
+
+    svg {
+      width: 45.59px;
+      height: auto;
+    }
 
     h2 {
       font-size: 1.9rem;
@@ -119,7 +125,12 @@
   border-radius: 100px 0 0 100px;
   background-color: #dcead2;
   overflow: hidden;
-  transition: height 0.3s ease;
+  transition: height 0.3s ease, opacity 0.3s ease;
+
+  &.--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   &_container {
     width: 100%;
@@ -277,6 +288,214 @@
     &_title {
       margin-top: 15px;
       gap: 20px;
+    }
+  }
+}
+
+// ===== bnr =====
+.c-bnr {
+  &_container {
+    margin-top: 200px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  &_about {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    picture {
+      padding-bottom: calc(365 / 1360 * 100%);
+      border-radius: 80px;
+    }
+
+    &_content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      text-align: center;
+      color: $white-cl;
+      width: 100%;
+
+      p {
+        margin-top: 33px;
+        font-size: 1.6rem;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &_contact {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    div.c-picture {
+      padding-bottom: calc(365 / 1360 * 100%);
+      border-radius: 80px;
+      background-color: #f5f4ec;
+    }
+
+    &_inner {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 80px;
+      z-index: 1;
+    }
+
+    &_left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_right {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 25px;
+
+      a {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        border-radius: 60px;
+        background-color: $white-cl;
+        font-size: 1.8rem;
+        line-height: 1.3;
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          position: absolute;
+          right: 36px;
+          top: 50%;
+          transform: translateY(-50%);
+
+          &.mail {
+            right: 32px;
+          }
+        }
+      }
+    }
+  }
+
+  @include maxW(1023px) {
+    &_container {
+      margin-top: 120px;
+      padding: 0 var(--paddsp);
+      gap: 26px;
+    }
+
+    &_about {
+      picture {
+        padding-bottom: 100%;
+        border-radius: 40px;
+        aspect-ratio: 1/1;
+      }
+
+      &_content {
+        p {
+          margin-top: 21px;
+        }
+      }
+    }
+
+    &_contact {
+      div.c-picture {
+        padding-bottom: 100%;
+        border-radius: 40px;
+        aspect-ratio: 1/1;
+      }
+
+      &_inner {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 54px;
+        padding: 0 20px;
+        height: auto;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &_right {
+        gap: 20px;
+
+        a {
+          height: 60px;
+          font-size: 1.4rem;
+
+          svg.phone {
+            width: 16px;
+            height: auto;
+            right: 25px;
+          }
+
+          svg.mail {
+            width: 19.98px;
+            height: auto;
+            right: 23px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ===== tit =====
+.c-tit {
+  &_heading {
+    margin-top: 220px;
+    text-align: center;
+  }
+
+  &_thumb {
+    position: relative;
+    margin-top: 120px;
+    padding: 0 40px;
+
+    &_main {
+      padding-bottom: calc(680 / 1360 * 100%);
+      border-radius: 80px;
+
+      &:after {
+        background-color: rgba($color: #000, $alpha: 0.2);
+      }
+    }
+
+    &_logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+  }
+
+  @include maxW(1023px) {
+    &_heading {
+      margin-top: 115px;
+    }
+
+    &_thumb {
+      margin-top: 45px;
+      padding: 0 var(--paddsp);
+
+      &_main {
+        padding-bottom: 100%;
+        border-radius: 40px;
+      }
     }
   }
 }

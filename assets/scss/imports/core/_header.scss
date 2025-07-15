@@ -16,15 +16,10 @@
 
   &_logo {
     display: block;
-    width: 160px;
-    height: 225px;
+    width: 132px;
+    height: 186px;
     overflow: hidden;
     transition: 0.5s;
-
-    &.--shrink {
-      width: 132px;
-      height: 145px;
-    }
 
     svg {
       width: 100%;
@@ -32,26 +27,25 @@
     }
 
     @include maxW(1023px) {
-      width: 80px;
-      height: auto;
+      width: 65px;
+      height: 72px;
     }
   }
 
   &_center {
     position: fixed;
-    top: 52px;
+    top: 50px;
     z-index: 10;
 
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
-    color: $white-cl;
-    transition: color 0.3s ease;
+    gap: 25px;
+    transition: color 1s ease;
 
     &.--black {
-      color: $black-cl;
+      color: $black-cl !important;
     }
 
     a.--current {
@@ -60,7 +54,7 @@
       &:after {
         content: "";
         position: absolute;
-        bottom: -8px;
+        bottom: -7px;
         display: block;
         width: 100%;
         height: 2px;
@@ -72,7 +66,7 @@
 
   &_right {
     position: fixed;
-    top: 58px;
+    top: 56px;
     right: 45px;
     z-index: 10;
 
@@ -104,6 +98,44 @@
   }
 }
 
+@include minW(1023px) {
+  [data-header-homepage] {
+    color: $white-cl;
+
+    .c-header_logo {
+      width: 160px;
+      height: 225px;
+    }
+  }
+
+  [data-header-shrink] {
+    &.--shrink {
+      .c-header_logo {
+        width: 132px;
+        height: 145px;
+      }
+    }
+  }
+}
+
+@include maxW(1023px) {
+  [data-header-homepage] {
+    .c-header_logo {
+      width: 80px;
+      height: 113px;
+    }
+  }
+
+  [data-header-shrink] {
+    &.--shrink {
+      .c-header_logo {
+        width: 65px;
+        height: 72px;
+      }
+    }
+  }
+}
+
 .c-menu {
   position: fixed;
   top: 0;
@@ -112,6 +144,7 @@
   width: 100%;
   height: 100vh;
   pointer-events: none;
+  color: $black-cl;
 
   &.--show {
     .c-menu_wrapper {
@@ -231,9 +264,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 0;
     flex: 1 1 0%;
     gap: 110px;
+    margin-top: 120px;
+    transform: translateY(-100px);
 
     a {
       margin-top: 23px;
@@ -255,6 +289,7 @@
 
     div.sub {
       transform: translateY(-50px);
+
       a {
         margin-top: 13px;
         font-size: 1.6rem;
@@ -288,8 +323,8 @@
     }
 
     &_center {
-      padding: 20px 0;
       gap: 70px;
+      transform: translateY(-80px);
 
       a {
         margin-top: 17px;
