@@ -186,5 +186,49 @@ eventsTrigger.forEach((evt) => {
   window.addEventListener(evt, handleReservation);
 });
 
+// ===== about page =====
+const cloneSlidesIfNeeded = (swiperSelector, minSlidesRequired = 4) => {
+  const swiperWrapper = document.querySelector(
+    `${swiperSelector} .swiper-wrapper`
+  );
+  if (!swiperWrapper) return;
+  const slides = swiperWrapper.querySelectorAll(".swiper-slide");
+  if (slides.length >= minSlidesRequired) return;
+  slides.forEach((slide) => {
+    const clone = slide.cloneNode(true);
+    const source = clone.querySelector("source");
+    if (source && source.dataset.srcset) {
+      source.srcset = source.dataset.srcset;
+    }
+    swiperWrapper.appendChild(clone);
+  });
+};
+cloneSlidesIfNeeded(".aboutpage .about_archive_swiper");
+
+const aboutArchiveSwiper = new Swiper("[data-about-archive-swiper]", {
+  initialSlide: 1,
+  centeredSlides: true,
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  speed: 1000,
+  breakpoints: {
+    0: {
+      slidesPerView: 1.26,
+      spaceBetween: 20,
+      allowTouchMove: true,
+      draggable: true,
+    },
+    1024: {
+      slidesPerView: 1.915,
+      spaceBetween: 30,
+      allowTouchMove: false,
+      draggable: false,
+    },
+  },
+});
+
 // ### ===== DOMCONTENTLOADED ===== ###
 window.addEventListener("DOMContentLoaded", init);

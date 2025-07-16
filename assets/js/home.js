@@ -183,7 +183,7 @@ const aboutSwiper = new Swiper("[data-about-swiper]", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-  speed: 600,
+  speed: 1000,
   breakpoints: {
     0: {
       slidesPerView: 1.231,
