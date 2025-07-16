@@ -162,6 +162,13 @@
         }
       }
 
+      &_controls {
+        .swiper-button-next,
+        .swiper-button-prev {
+          transform: translateY(calc(-50% - 20px));
+        }
+      }
+
       &_content {
         margin-top: 30px;
         font-size: 1.4rem;
