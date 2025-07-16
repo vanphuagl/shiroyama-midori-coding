@@ -748,3 +748,48 @@
     }
   }
 }
+
+// ===== c-controls =====
+.c-controls {
+  .swiper-button-next,
+  .swiper-button-prev {
+    font-size: 0;
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    background-color: $white-cl;
+    border-radius: 50%;
+    transform: translateY(calc(-50% - 20px));
+
+    &.swiper-button-disabled {
+      opacity: 1;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    svg {
+      width: 20px;
+      height: auto;
+    }
+
+    &:after {
+      content: "";
+    }
+  }
+
+  .swiper-button-next {
+    right: 40px;
+  }
+
+  .swiper-button-prev {
+    left: 40px;
+
+    svg {
+      transform: rotate(-180deg);
+    }
+  }
+
+  @include maxW(1023px) {
+    display: none;
+  }
+}

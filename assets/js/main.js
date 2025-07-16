@@ -186,7 +186,7 @@ eventsTrigger.forEach((evt) => {
   window.addEventListener(evt, handleReservation);
 });
 
-// ===== about page =====
+// ===== clone slides when < 4 =====
 const cloneSlidesIfNeeded = (swiperSelector, minSlidesRequired = 4) => {
   const swiperWrapper = document.querySelector(
     `${swiperSelector} .swiper-wrapper`
@@ -203,12 +203,13 @@ const cloneSlidesIfNeeded = (swiperSelector, minSlidesRequired = 4) => {
     swiperWrapper.appendChild(clone);
   });
 };
-cloneSlidesIfNeeded(".aboutpage .about_archive_swiper");
 
+// ===== about page =====
+// cloneSlidesIfNeeded("[data-about-archive-swiper]");
 const aboutArchiveSwiper = new Swiper("[data-about-archive-swiper]", {
   initialSlide: 1,
   centeredSlides: true,
-  loop: true,
+  // loop: true,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -222,7 +223,34 @@ const aboutArchiveSwiper = new Swiper("[data-about-archive-swiper]", {
       draggable: true,
     },
     1024: {
-      slidesPerView: 1.915,
+      slidesPerView: 1.815,
+      spaceBetween: 30,
+      allowTouchMove: false,
+      draggable: false,
+    },
+  },
+});
+
+// ===== education page =====
+// cloneSlidesIfNeeded("[data-education-basic-swiper]");
+const educationBasicSwiper = new Swiper("[data-education-basic-swiper]", {
+  initialSlide: 1,
+  centeredSlides: true,
+  // loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  speed: 1000,
+  breakpoints: {
+    0: {
+      slidesPerView: 1.26,
+      spaceBetween: 20,
+      allowTouchMove: true,
+      draggable: true,
+    },
+    1024: {
+      slidesPerView: 1.725,
       spaceBetween: 30,
       allowTouchMove: false,
       draggable: false,
