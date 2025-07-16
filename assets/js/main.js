@@ -232,11 +232,9 @@ const aboutArchiveSwiper = new Swiper("[data-about-archive-swiper]", {
 });
 
 // ===== education page =====
-// cloneSlidesIfNeeded("[data-education-basic-swiper]");
 const educationBasicSwiper = new Swiper("[data-education-basic-swiper]", {
   initialSlide: 1,
   centeredSlides: true,
-  // loop: true,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -252,6 +250,29 @@ const educationBasicSwiper = new Swiper("[data-education-basic-swiper]", {
     1024: {
       slidesPerView: 1.725,
       spaceBetween: 30,
+      allowTouchMove: false,
+      draggable: false,
+    },
+  },
+});
+
+// ===== daily page =====
+const dailySwiper = new Swiper("[data-daily-swiper]", {
+  speed: 1000,
+  breakpoints: {
+    0: {
+      initialSlide: 1,
+      centeredSlides: true,
+      slidesPerView: 1.26,
+      spaceBetween: 20,
+      allowTouchMove: true,
+      draggable: true,
+    },
+    1024: {
+      initialSlide: 0,
+      centeredSlides: false,
+      slidesPerView: 3,
+      spaceBetween: 35,
       allowTouchMove: false,
       draggable: false,
     },

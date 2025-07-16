@@ -3,8 +3,68 @@
 /* -------------------------------------------------------------------------- */
 
 .dailypage {
-    // ===== daily =====
-    .daily {
-        
+  // ===== daily =====
+  .daily {
+    &_swiper {
+      margin-top: 150px;
+      padding: 0 40px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+
+      picture {
+        padding-bottom: calc(287 / 430 * 100%);
+        border-radius: 40px;
+      }
+
+      &_inner {
+        margin-top: 30px;
+        padding: 0 40px;
+
+        h3 {
+          font-size: 2rem;
+          font-weight: 500;
+          line-height: 1.45;
+          text-align: center;
+        }
+      }
+
+      &_content {
+        margin-top: 30px;
+
+        p {
+          font-size: 1.5rem;
+          line-height: 1.7;
+          font-feature-settings: "palt" 1;
+          text-align: justify;
+        }
+      }
+
+      @include maxW(1023px) {
+        margin-top: 120px;
+        padding: 0;
+
+        picture {
+          padding-bottom: calc(216 / 324 * 100%);
+        }
+        &_inner {
+          margin-top: 15px;
+          padding: 0 30px;
+
+          h3 {
+            font-size: 1.6rem;
+          }
+        }
+
+        &_content {
+          margin-top: 20px;
+
+          p {
+            font-size: 1.3rem;
+            line-height: 1.72;
+          }
+        }
+      }
     }
+  }
 }
