@@ -186,6 +186,25 @@ eventsTrigger.forEach((evt) => {
   window.addEventListener(evt, handleReservation);
 });
 
+// ===== handle tabs change =====
+const initTabs = () => {
+  const tabs = document.querySelectorAll("[data-tabs-items]");
+  const contents = document.querySelectorAll("[data-tabs-content]");
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      // remove all class items/content
+      tabs.forEach((t) => t.classList.remove("--active"));
+      contents.forEach((c) => c.classList.remove("--active"));
+
+      // add class item/click show/content
+      tab.classList.add("--active");
+      contents[index].classList.add("--active");
+    });
+  });
+};
+initTabs();
+
 // ===== clone slides when < 4 =====
 const cloneSlidesIfNeeded = (swiperSelector, minSlidesRequired = 4) => {
   const swiperWrapper = document.querySelector(
