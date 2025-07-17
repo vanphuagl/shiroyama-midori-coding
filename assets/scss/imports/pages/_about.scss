@@ -416,45 +416,5 @@
         }
       }
     }
-
-    &_mess {
-      &_grid {
-        margin-top: 80px;
-        display: grid;
-        grid-template-columns: 34.043% 1fr;
-        gap: 80px;
-      }
-
-      &_left {
-        picture {
-          border-radius: 40px;
-          aspect-ratio: 1/1;
-        }
-      }
-
-      &_right {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 20px;
-      }
-
-      &_sign {
-        text-align: right;
-        margin-left: auto;
-      }
-
-      @include maxW(1023px) {
-        &_grid {
-          margin-top: 45px;
-          display: block;
-        }
-
-        &_right {
-          margin-top: 45px;
-          gap: 55px;
-        }
-      }
-    }
   }
 }
