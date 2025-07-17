@@ -122,10 +122,10 @@ const [overlay, menu, menuTogglers] = [
 const detectOverlay = (detect) => {
   if (detect) {
     overlay.classList.add("--show");
-    document.body.style.overflow = "hidden";
+    window.lenis?.stop();
   } else {
     overlay.classList.remove("--show");
-    document.body.style.removeProperty("overflow");
+    window.lenis?.start();
   }
 };
 

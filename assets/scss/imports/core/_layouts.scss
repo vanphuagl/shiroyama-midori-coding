@@ -64,8 +64,11 @@ body {
 //-------------------------------------------------------
 main {
   width: 100vw;
-  overflow: hidden;
   flex: 1;
+
+  &:not(.dailypage) {
+    overflow: hidden;
+  }
 }
 
 ::selection {
